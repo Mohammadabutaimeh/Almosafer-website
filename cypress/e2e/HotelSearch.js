@@ -9,7 +9,7 @@ describe('This is to check the hotel hotels resualt', () => {
         let destination;
         let destinationsEN = ['Dubai', 'Jeddah', 'Amman'];
         destination = destinationsEN[Math.floor(Math.random() * destinationsEN.length)];
-        cy.get('[data-testid="AutoCompleteInput"]').type("destination");
+        cy.get('[data-testid="AutoCompleteInput"]').type(destination);
         cy.get('[data-testid="AutoCompleteResultsList"]').should('be.visible');
         cy.get('[data-testid="AutoCompleteResultItem0"]').click();
         cy.get('[data-testid="HotelSearchBox__SearchButton"]').click();
