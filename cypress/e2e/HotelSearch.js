@@ -9,7 +9,7 @@ describe('This is to check the hotel hotels resualt', () => {
         let destination;
         let destinationsEN = ['Dubai', 'Jeddah', 'Amman'];
         destination = destinationsEN[Math.floor(Math.random() * destinationsEN.length)];
-        cy.get('[data-testid="AutoCompleteInput"]').type("Amman");
+        cy.get('[data-testid="AutoCompleteInput"]').type(destination);
         cy.get('[data-testid="AutoCompleteResultsList"]').should('be.visible');
         cy.get('[data-testid="AutoCompleteResultItem0"]').click();
         cy.get('[data-testid="HotelSearchBox__SearchButton"]').click();
@@ -18,8 +18,8 @@ describe('This is to check the hotel hotels resualt', () => {
         cy.get('.Price__Value').first().invoke('text').then((firstPrice) => {
             cy.get('.Price__Value').last().invoke('text').then((lastPrice) => {
 
-                const firstPriceValue = parseFloat(firstPrice.replace(/[^0-9.]/g, ''));
-                const lastPriceValue = parseFloat(lastPrice.replace(/[^0-9.]/g, ''));
+                const firstPriceValue = parseFloat(firstPrice);
+                const lastPriceValue = parseFloat(lastPrice);
                 expect(firstPriceValue).to.be.lessThan(lastPriceValue);
             });
         });
